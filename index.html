@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VINTAGE MEN LP | Catálogo</title>
 
-
-
-
-<!-- ====== BOOTSTRAP LOCAL ====== -->
+    <!-- ====== BOOTSTRAP LOCAL ====== -->
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css" />
     <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +16,7 @@
         :root {
             --primary-dark: #0f1215;
             --secondary-dark: #1a1e23;
-            --accent-cyan: #20c997; 
+            --accent-cyan: #20c997;
             --text-gray: #aab0b6;
         }
 
@@ -47,7 +44,7 @@
 
         .hero-section {
             padding: 120px 0 60px;
-            background: linear-gradient(to bottom, rgba(15,18,21,0.7), var(--primary-dark)), 
+            background: linear-gradient(to bottom, rgba(15,18,21,0.7), var(--primary-dark)),
                         url('https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
@@ -71,7 +68,7 @@
         .card-product {
             background-color: var(--secondary-dark);
             border: none;
-            border-radius: 0px; 
+            border-radius: 0px;
             transition: all 0.3s ease;
             margin-bottom: 30px;
         }
@@ -164,7 +161,6 @@
             color: #ffffff !important;
         }
 
-        /* Estilo para los botones de sugerencia */
         .suggestion-btn {
             background-color: transparent;
             border: 1px solid var(--accent-cyan);
@@ -182,6 +178,7 @@
 </head>
 <body>
 
+    <!-- ====== NAVBAR ====== -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
@@ -200,6 +197,7 @@
         </div>
     </nav>
 
+    <!-- ====== HERO ====== -->
     <header class="hero-section">
         <div class="container">
             <h1 class="display-3 fw-bold mb-3">VINTAGE STYLE</h1>
@@ -208,6 +206,7 @@
         </div>
     </header>
 
+    <!-- ====== PRODUCTOS ====== -->
     <section id="productos" class="container py-5">
         <div class="row mb-5">
             <div class="col-12 text-center">
@@ -229,6 +228,7 @@
         </div>
 
         <div class="row">
+            <!-- Producto 1 -->
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card card-product">
                     <div class="img-container">
@@ -244,7 +244,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- Producto 2 -->
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card card-product">
                     <div class="img-container">
@@ -259,7 +259,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- Producto 3 -->
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card card-product">
                     <div class="img-container">
@@ -274,7 +274,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- Producto 4 -->
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card card-product">
                     <div class="img-container">
@@ -292,6 +292,7 @@
         </div>
     </section>
 
+    <!-- ====== FOOTER ====== -->
     <footer id="contacto">
         <div class="container text-center">
             <h4 class="mb-4">VINTAGE MEN LP</h4>
@@ -305,7 +306,7 @@
         </div>
     </footer>
 
-    <!-- CHATBOT -->
+    <!-- ====== CHATBOT ====== -->
     <div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1050; font-family: 'Montserrat', sans-serif;">
         <button id="chat-toggle-btn" class="btn chat-btn-custom rounded-circle shadow-lg d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; font-size: 26px;">
             <i class="bi bi-chat-dots-fill"></i>
@@ -317,10 +318,9 @@
                 <button type="button" class="btn-close btn-close-white" id="chat-close-btn"></button>
             </div>
             <div id="chat-body" class="card-body chat-body-custom" style="overflow-y: auto; flex-grow: 1; padding: 15px;">
-                <!-- Mensaje de bienvenida se añadirá con JS -->
+                <!-- Mensajes inyectados por JS -->
             </div>
             <div class="card-footer bg-transparent border-top-0 pb-3">
-                <!-- Botones de sugerencia -->
                 <div class="d-flex gap-2 flex-wrap mb-2" id="suggestion-buttons">
                     <button class="btn suggestion-btn" data-mensaje="Ver productos">📦 Ver productos</button>
                     <button class="btn suggestion-btn" data-mensaje="Precios">💰 Precios</button>
@@ -328,120 +328,73 @@
                 </div>
                 <div class="input-group">
                     <input type="text" id="chat-input" class="form-control bg-dark text-white border-secondary" placeholder="Escribe tu mensaje..." style="font-size: 14px;">
-                    <button class="btn chat-btn-customfw-bold" id="chat-send-btn" type="button">Enviar</button>
+                    <button class="btn chat-btn-custom fw-bold" id="chat-send-btn" type="button">Enviar</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- ====== SCRIPTS ====== -->
     <script>
-   
-async function enviarMensajeWeb(mensaje = null) {
-    const texto = mensaje || chatInput.value.trim();
-    if (!texto) return;
-    if (!mensaje) chatInput.value = '';
+        // ================================================================
+        // 1. CONFIGURACIÓN Y DATOS DE PRODUCTOS
+        // ================================================================
 
-    historial.push({ role: 'user', text: texto });
-    localStorage.setItem('chatHistorial', JSON.stringify(historial));
-    renderizarMensajes();
+        const WORKER_URL = 'https://vintage-chatbot.churqui19.workers.dev';
 
-    const indicadorId = 'typing-indicator-' + Date.now();
-    chatBody.innerHTML += `<div id="${indicadorId}" class="mb-2 text-start"><span class="badge chat-badge-bot p-2">⏳ Escribiendo...</span></div>`;
-    chatBody.scrollTop = chatBody.scrollHeight;
-
-    try {
-        // 🔥 LLAMADA A TU WORKER DE CLOUDFLARE (reemplaza con tu URL)
-        const response = await fetch('https://vintage-chatbot.churqui19.workers.dev', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ mensaje: texto })
-        });
-
-        document.getElementById(indicadorId)?.remove();
-
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            console.error('Error Worker:', errorData);
-            let msgError = 'Lo siento, hubo un problema al procesar tu mensaje.';
-            if (errorData.error) {
-                msgError += ` (${errorData.error})`;
+        const productos = [
+            {
+                id: 1,
+                nombre: 'Camisa Retro Slim',
+                precio: 180,
+                moneda: 'BS',
+                nuevo: true,
+                descripcion: 'Camisa de corte slim, cuello inglés, manga larga. Ideal para looks formales o smart casual.',
+                colores: ['Blanco', 'Negro', 'Azul marino'],
+                tallas: ['S', 'M', 'L', 'XL'],
+                material: '100% algodón peruano, suave y transpirable',
+                cuidados: 'Lavar en frío, no usar blanqueador, planchar a baja temperatura'
+            },
+            {
+                id: 2,
+                nombre: 'Chaqueta Cuero Urban',
+                precio: 450,
+                moneda: 'BS',
+                nuevo: false,
+                descripcion: 'Chaqueta de cuero sintético, diseño biker, cierre frontal con cremallera, cuello con solapas.',
+                colores: ['Negro', 'Café'],
+                tallas: ['M', 'L', 'XL', 'XXL'],
+                material: 'Cuero ecológico de alta durabilidad, forro interior de poliéster',
+                cuidados: 'Limpiar con paño húmedo, no exponer al sol directo, no usar detergentes fuertes'
+            },
+            {
+                id: 3,
+                nombre: 'Jean Clásico Dark',
+                precio: 220,
+                moneda: 'BS',
+                nuevo: false,
+                descripcion: 'Jean recto, tiro medio, acabado oscuro (dark wash). Combina con todo.',
+                colores: ['Azul índigo', 'Negro'],
+                tallas: ['30', '32', '34', '36'],
+                material: 'Denim de algodón elástico (98% algodón, 2% elastano)',
+                cuidados: 'Lavar del revés, secar a la sombra, no usar secadora'
+            },
+            {
+                id: 4,
+                nombre: 'Polera Oversize White',
+                precio: 130,
+                moneda: 'BS',
+                nuevo: false,
+                descripcion: 'Polera oversize, cuello redondo, manga corta, corte holgado. Estilo urbano y cómodo.',
+                colores: ['Blanco', 'Negro'],
+                tallas: ['S', 'M', 'L', 'XL'],
+                material: 'Algodón peinado 180g/m², suave y duradero',
+                cuidados: 'Lavar en agua fría, no usar secadora, planchar a temperatura media'
             }
-            historial.push({ role: 'model', text: '⛔ ' + msgError });
-            localStorage.setItem('chatHistorial', JSON.stringify(historial));
-            renderizarMensajes();
-            return;
-        }
+        ];
 
-        const data = await response.json();
-        const respuesta = data.respuesta || 'No pude entender tu consulta.';
-
-        historial.push({ role: 'model', text: respuesta });
-        localStorage.setItem('chatHistorial', JSON.stringify(historial));
-        renderizarMensajes();
-
-    } catch (error) {
-        console.error('Error en enviarMensajeWeb:', error);
-        document.getElementById(indicadorId)?.remove();
-        historial.push({ role: 'model', text: '⛔ Error de conexión con el servidor.' });
-        localStorage.setItem('chatHistorial', JSON.stringify(historial));
-        renderizarMensajes();
-    }
-}
-
-// Productos en estructura de datos
-const productos = [
-    {
-        id: 1,
-        nombre: 'Camisa Retro Slim',
-        precio: 180,
-        moneda: 'BS',
-        nuevo: true,
-        descripcion: 'Camisa de corte slim, cuello inglés, manga larga. Ideal para looks formales o smart casual.',
-        colores: ['Blanco', 'Negro', 'Azul marino'],
-        tallas: ['S', 'M', 'L', 'XL'],
-        material: '100% algodón peruano, suave y transpirable',
-        cuidados: 'Lavar en frío, no usar blanqueador, planchar a baja temperatura'
-    },
-    {
-        id: 2,
-        nombre: 'Chaqueta Cuero Urban',
-        precio: 450,
-        moneda: 'BS',
-        nuevo: false,
-        descripcion: 'Chaqueta de cuero sintético, diseño biker, cierre frontal con cremallera, cuello con solapas.',
-        colores: ['Negro', 'Café'],
-        tallas: ['M', 'L', 'XL', 'XXL'],
-        material: 'Cuero ecológico de alta durabilidad, forro interior de poliéster',
-        cuidados: 'Limpiar con paño húmedo, no exponer al sol directo, no usar detergentes fuertes'
-    },
-    {
-        id: 3,
-        nombre: 'Jean Clásico Dark',
-        precio: 220,
-        moneda: 'BS',
-        nuevo: false,
-        descripcion: 'Jean recto, tiro medio, acabado oscuro (dark wash). Combina con todo.',
-        colores: ['Azul índigo', 'Negro'],
-        tallas: ['30', '32', '34', '36'],
-        material: 'Denim de algodón elástico (98% algodón, 2% elastano)',
-        cuidados: 'Lavar del revés, secar a la sombra, no usar secadora'
-    },
-    {
-        id: 4,
-        nombre: 'Polera Oversize White',
-        precio: 130,
-        moneda: 'BS',
-        nuevo: false,
-        descripcion: 'Polera oversize, cuello redondo, manga corta, corte holgado. Estilo urbano y cómodo.',
-        colores: ['Blanco', 'Negro'],
-        tallas: ['S', 'M', 'L', 'XL'],
-        material: 'Algodón peinado 180g/m², suave y duradero',
-        cuidados: 'Lavar en agua fría, no usar secadora, planchar a temperatura media'
-    }
-];
-
-// Construir contexto dinámico a partir de los productos
-let contextoConstruido = `
+        // Construir el contexto de la tienda a partir de los productos
+        let CONTEXTO_TIENDA = `
 Eres el asistente oficial de la tienda online "Vintage Men LP", especializada en ropa urbana para hombre, con envíos a toda Bolivia desde La Paz.
 
 Información de la tienda:
@@ -452,28 +405,25 @@ Información de la tienda:
 
 Productos disponibles:\n`;
 
-productos.forEach(p => {
-    contextoConstruido += `\n${p.nombre} - ${p.precio} ${p.moneda}`;
-    if (p.nuevo) contextoConstruido += ' (NUEVO)';
-    contextoConstruido += `\n  Descripción: ${p.descripcion}`;
-    contextoConstruido += `\n  Colores disponibles: ${p.colores.join(', ')}`;
-    contextoConstruido += `\n  Tallas disponibles: ${p.tallas.join(', ')}`;
-    contextoConstruido += `\n  Material: ${p.material}`;
-    contextoConstruido += `\n  Cuidados: ${p.cuidados}\n`;
-});
+        productos.forEach(p => {
+            CONTEXTO_TIENDA += `\n${p.nombre} - ${p.precio} ${p.moneda}`;
+            if (p.nuevo) CONTEXTO_TIENDA += ' (NUEVO)';
+            CONTEXTO_TIENDA += `\n  Descripción: ${p.descripcion}`;
+            CONTEXTO_TIENDA += `\n  Colores disponibles: ${p.colores.join(', ')}`;
+            CONTEXTO_TIENDA += `\n  Tallas disponibles: ${p.tallas.join(', ')}`;
+            CONTEXTO_TIENDA += `\n  Material: ${p.material}`;
+            CONTEXTO_TIENDA += `\n  Cuidados: ${p.cuidados}\n`;
+        });
 
-contextoConstruido += `\nPolíticas de devolución: Se aceptan cambios dentro de los 7 días posteriores a la compra, siempre que el producto esté con etiquetas y en perfecto estado.
+        CONTEXTO_TIENDA += `\nPolíticas de devolución: Se aceptan cambios dentro de los 7 días posteriores a la compra, siempre que el producto esté con etiquetas y en perfecto estado.
 Responde siempre en español, de forma cordial y profesional. Si te preguntan sobre temas ajenos a la tienda, redirige amablemente a los productos. Sé específico y útil.`;
 
-// Usamos contextoConstruido como el mensaje inicial
-const CONTEXTO_TIENDA = contextoConstruido;
-
-        // ============================================================
+        // ================================================================
         // 2. ESTADO DEL CHAT (historial y persistencia)
-        // ============================================================
+        // ================================================================
+
         let historial = [];
 
-        // Cargar historial desde localStorage si existe
         const stored = localStorage.getItem('chatHistorial');
         if (stored) {
             try {
@@ -483,22 +433,27 @@ const CONTEXTO_TIENDA = contextoConstruido;
             }
         }
 
-        // Si no hay historial, inicializar con el mensaje de bienvenida del bot
         if (historial.length === 0) {
             historial.push({
                 role: 'model',
                 text: '¡Hola! Bienvenido a Vintage Men LP. ¿En qué puedo ayudarte hoy?'
             });
+            localStorage.setItem('chatHistorial', JSON.stringify(historial));
         }
 
-        // ============================================================
-        // 3. FUNCIONES PRINCIPALES
-        // ============================================================
+        // ================================================================
+        // 3. FUNCIONES DEL CHAT
+        // ================================================================
 
-        // Renderizar todos los mensajes del historial en el chat-body
-        function renderizarHistorial() {
-            const chatBody = document.getElementById('chat-body');
-            chatBody.innerHTML = ''; // Limpiar
+        const chatBody = document.getElementById('chat-body');
+        const chatInput = document.getElementById('chat-input');
+        const chatSendBtn = document.getElementById('chat-send-btn');
+        const chatToggleBtn = document.getElementById('chat-toggle-btn');
+        const chatCloseBtn = document.getElementById('chat-close-btn');
+        const chatWindow = document.getElementById('chat-window');
+
+        function renderizarMensajes() {
+            chatBody.innerHTML = '';
             historial.forEach(msg => {
                 const esUsuario = msg.role === 'user';
                 const clase = esUsuario ? 'chat-badge-user' : 'chat-badge-bot';
@@ -515,143 +470,103 @@ const CONTEXTO_TIENDA = contextoConstruido;
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        // Guardar historial en localStorage
         function guardarHistorial() {
             localStorage.setItem('chatHistorial', JSON.stringify(historial));
         }
 
-        // Mostrar indicador de "escribiendo..."
+        function agregarMensaje(role, text) {
+            historial.push({ role, text });
+            renderizarMensajes();
+            guardarHistorial();
+        }
+
         function mostrarIndicador() {
-            const chatBody = document.getElementById('chat-body');
             const indicador = document.createElement('div');
             indicador.id = 'typing-indicator';
             indicador.className = 'mb-2 text-start';
-            indicador.innerHTML = `<span class="badge chat-badge-bot p-2">...</span>`;
+            indicador.innerHTML = `<span class="badge chat-badge-bot p-2">⏳ Escribiendo...</span>`;
             chatBody.appendChild(indicador);
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        // Ocultar indicador
         function ocultarIndicador() {
             const indicador = document.getElementById('typing-indicator');
             if (indicador) indicador.remove();
         }
 
-        // Agregar un mensaje al historial y renderizar
-        function agregarMensaje(role, text) {
-            historial.push({ role, text });
-            renderizarHistorial();
-            guardarHistorial();
-        }
-
-        // Enviar mensaje del usuario a la API
-        async function enviarMensajeWeb(mensaje) {
-            const input = document.getElementById('chat-input');
-            const texto = mensaje || input.value.trim();
+        async function enviarMensajeWeb(mensaje = null) {
+            const texto = mensaje || chatInput.value.trim();
             if (!texto) return;
 
-            // Agregar mensaje del usuario al historial y renderizar
-            agregarMensaje('user', texto);
-            input.value = '';
+            if (!mensaje) chatInput.value = '';
 
-            // Mostrar indicador de escritura
+            // Agregar mensaje del usuario al historial
+            agregarMensaje('user', texto);
+
             mostrarIndicador();
 
             try {
-                // Preparar el payload con el historial completo (pero limitado a los últimos 10 mensajes para no exceder tokens)
-                const historialLimitado = historial.slice(-10); // últimos 10 intercambios
-                // Construir contents para Gemini
-                const contents = [];
-                // Inyectar el contexto de la tienda como primer mensaje del sistema (simulado como user)
-                contents.push({
-                    role: 'user',
-                    parts: [{ text: CONTEXTO_TIENDA }]
-                });
-                // Añadir historial (cada mensaje con su rol)
-                historialLimitado.forEach(msg => {
-                    contents.push({
-                        role: msg.role === 'user' ? 'user' : 'model',
-                        parts: [{ text: msg.text }]
-                    });
-                });
-
-                const cuerpoPeticion = {
-                    contents: contents,
-                    generationConfig: {
-                        temperature: 0.5,
-                        maxOutputTokens: 300
-                    }
-                };
-
-                const response = await fetch(URL_API, {
+                // Enviar solo el mensaje actual al Worker (el Worker tiene el contexto fijo)
+                const response = await fetch(WORKER_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(cuerpoPeticion)
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mensaje: texto })
                 });
+
+                ocultarIndicador();
 
                 if (!response.ok) {
                     const errorData = await response.json().catch(() => ({}));
-                    console.error('Error de Gemini:', errorData);
-                    throw new Error(`Error ${response.status}: ${errorData.error?.message || 'Error desconocido'}`);
+                    console.error('Error Worker:', errorData);
+                    const msgError = errorData.error || 'Hubo un problema al procesar tu mensaje.';
+                    agregarMensaje('model', '⛔ ' + msgError);
+                    return;
                 }
 
                 const data = await response.json();
-                const textoRespuesta = data.candidates[0].content.parts[0].text;
-
-                // Agregar respuesta del bot al historial
-                agregarMensaje('model', textoRespuesta);
+                const respuesta = data.respuesta || 'No pude entender tu consulta.';
+                agregarMensaje('model', respuesta);
 
             } catch (error) {
                 console.error('Error en enviarMensajeWeb:', error);
-                // Mostrar mensaje de error amigable
-                const errorMsg = '⛔ Lo siento, no pude procesar tu mensaje. Intenta de nuevo.';
-                agregarMensaje('model', errorMsg);
-            } finally {
                 ocultarIndicador();
+                agregarMensaje('model', '⛔ Error de conexión con el servidor.');
             }
         }
 
-        // Función para enviar mensajes predefinidos desde los botones de sugerencia
         function enviarMensajePredefinido(mensaje) {
             enviarMensajeWeb(mensaje);
         }
 
-        // Función para abrir/cerrar el chat
         function toggleChat() {
-            const chatWindow = document.getElementById('chat-window');
             chatWindow.classList.toggle('d-none');
-            // Si se abre, enfocar el input
             if (!chatWindow.classList.contains('d-none')) {
-                document.getElementById('chat-input').focus();
+                chatInput.focus();
+                renderizarMensajes();
             }
         }
 
-        // ============================================================
-        // 4. ASIGNACIÓN DE EVENTOS (después de cargar el DOM)
-        // ============================================================
+        // ================================================================
+        // 4. EVENTOS
+        // ================================================================
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Renderizar historial inicial
-            renderizarHistorial();
+            renderizarMensajes();
 
-            // Botón toggle (abrir/cerrar)
-            document.getElementById('chat-toggle-btn').addEventListener('click', toggleChat);
-            document.getElementById('chat-close-btn').addEventListener('click', toggleChat);
+            chatToggleBtn.addEventListener('click', toggleChat);
+            chatCloseBtn.addEventListener('click', toggleChat);
 
-            // Botón enviar
-            document.getElementById('chat-send-btn').addEventListener('click', function() {
+            chatSendBtn.addEventListener('click', function() {
                 enviarMensajeWeb();
             });
 
-            // Enter en el input
-            document.getElementById('chat-input').addEventListener('keypress', function(e) {
+            chatInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
+                    e.preventDefault();
                     enviarMensajeWeb();
                 }
             });
 
-            // Botones de sugerencia
             document.querySelectorAll('.suggestion-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const mensaje = this.getAttribute('data-mensaje');
@@ -660,7 +575,7 @@ const CONTEXTO_TIENDA = contextoConstruido;
             });
         });
 
-        // (Opcional) Exponer funciones globalmente si se necesitan desde otros scripts
+        // Exponer funciones globalmente (por si se necesitan)
         window.enviarMensajeWeb = enviarMensajeWeb;
         window.toggleChat = toggleChat;
         window.enviarMensajePredefinido = enviarMensajePredefinido;
