@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VINTAGE MEN LP | Catálogo</title>
-    
-    <!-- Bootstrap & Fuentes -->
+
+
+
+
+<!-- ====== BOOTSTRAP LOCAL ====== -->
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -30,7 +35,6 @@
             letter-spacing: 1px;
         }
 
-        /* Navbar */
         .navbar {
             background-color: rgba(15, 18, 21, 0.98);
             border-bottom: 1px solid #333;
@@ -41,7 +45,6 @@
             color: var(--accent-cyan);
         }
 
-        /* Hero Section */
         .hero-section {
             padding: 120px 0 60px;
             background: linear-gradient(to bottom, rgba(15,18,21,0.7), var(--primary-dark)), 
@@ -51,7 +54,6 @@
             text-align: center;
         }
 
-        /* Sección de Video Promocional */
         .video-promo-container {
             max-width: 800px;
             margin: 0 auto 50px auto;
@@ -66,7 +68,6 @@
             display: block;
         }
 
-        /* Tarjetas de Producto */
         .card-product {
             background-color: var(--secondary-dark);
             border: none;
@@ -103,7 +104,6 @@
             font-size: 1.2rem;
         }
 
-        /* Botón WhatsApp */
         .btn-ws {
             background-color: var(--accent-cyan);
             color: #000;
@@ -119,26 +119,6 @@
             color: #fff;
         }
 
-        /* Botón Flotante */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
-            text-decoration: none;
-        }
-
-        /* Badge de Categoría */
         .badge-new {
             position: absolute;
             top: 10px;
@@ -156,11 +136,52 @@
             padding: 50px 0;
             border-top: 1px solid #222;
         }
+
+        /* Estilos del chatbot */
+        .chat-btn-custom {
+            background-color: var(--accent-cyan) !important;
+            border: none !important;
+            color: #000000 !important;
+        }
+        .chat-header-custom {
+            background-color: var(--secondary-dark) !important;
+            border-bottom: 1px solid #333 !important;
+            color: #ffffff !important;
+        }
+        .chat-window-custom {
+            background-color: var(--primary-dark) !important;
+            border: 1px solid #333 !important;
+        }
+        .chat-body-custom {
+            background-color: #161a1e !important;
+        }
+        .chat-badge-user {
+            background-color: var(--accent-cyan) !important;
+            color: #000000 !important;
+        }
+        .chat-badge-bot {
+            background-color: #2a2f35 !important;
+            color: #ffffff !important;
+        }
+
+        /* Estilo para los botones de sugerencia */
+        .suggestion-btn {
+            background-color: transparent;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            transition: 0.2s;
+        }
+        .suggestion-btn:hover {
+            background-color: var(--accent-cyan);
+            color: #000;
+        }
     </style>
 </head>
 <body>
 
-    <!-- MENÚ DE NAVEGACIÓN -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
@@ -179,7 +200,6 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <header class="hero-section">
         <div class="container">
             <h1 class="display-3 fw-bold mb-3">VINTAGE STYLE</h1>
@@ -188,9 +208,7 @@
         </div>
     </header>
 
-    <!-- SECCIÓN DE PRODUCTOS Y MULTIMEDIA -->
     <section id="productos" class="container py-5">
-        
         <div class="row mb-5">
             <div class="col-12 text-center">
                 <h2 class="display-5">Nuestra Colección</h2>
@@ -198,12 +216,10 @@
             </div>
         </div>
 
-        <!-- VIDEO PROMOCIONAL REPRODUCTOR HTML5 -->
         <div class="row mb-5">
             <div class="col-12 text-center">
                 <h4 class="text-uppercase mb-3" style="letter-spacing: 2px;">Mira nuestro spot</h4>
                 <div class="video-promo-container shadow">
-                    <!-- Aquí se reproduce nativamente tu archivo video33.mp4 -->
                     <video controls autoplay muted playsinline loop poster="bootstrap-5.0.2-dist/media/video333.png">
                         <source src="bootstrap-5.0.2-dist/media/video33.mp4" type="video/mp4">
                         Tu navegador no soporta reproducción de video en HTML5.
@@ -212,10 +228,7 @@
             </div>
         </div>
 
-        <!-- GRILLA DE PRODUCTOS -->
         <div class="row">
-            
-            <!-- Producto 1: Camisa Retro -->
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card card-product">
                     <div class="img-container">
@@ -232,7 +245,6 @@
                 </div>
             </div>
 
-            <!-- Producto 2: Chaqueta -->
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card card-product">
                     <div class="img-container">
@@ -248,7 +260,6 @@
                 </div>
             </div>
 
-            <!-- Producto 3: Jeans -->
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card card-product">
                     <div class="img-container">
@@ -264,7 +275,6 @@
                 </div>
             </div>
 
-            <!-- Producto 4: Polera -->
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card card-product">
                     <div class="img-container">
@@ -279,11 +289,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA -->
     <footer id="contacto">
         <div class="container text-center">
             <h4 class="mb-4">VINTAGE MEN LP</h4>
@@ -297,21 +305,322 @@
         </div>
     </footer>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/59179635114" class="whatsapp-float" target="_blank">
-        <i class="bi bi-whatsapp"></i>
-    </a>
+    <!-- CHATBOT -->
+    <div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1050; font-family: 'Montserrat', sans-serif;">
+        <button id="chat-toggle-btn" class="btn chat-btn-custom rounded-circle shadow-lg d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; font-size: 26px;">
+            <i class="bi bi-chat-dots-fill"></i>
+        </button>
 
-    <!-- DIALOGFLOW CHATBOT -->
-    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-    <df-messenger
-      intent="WELCOME"
-      chat-title="CHATBOT"
-      agent-id="fe669d56-a131-4bb7-9c7a-53f9366ebe6a"
-      language-code="es"
-    ></df-messenger>
-      
-    <!-- Scripts de Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <div id="chat-window" class="card chat-window-custom shadow-lg d-none" style="width: 350px; height: 450px; bottom: 75px; position: absolute; right: 0; display: flex; flex-direction: column;">
+            <div class="card-header chat-header-custom d-flex justify-content-between align-items-center">
+                <strong class="text-uppercase" style="font-family: 'Oswald', sans-serif; letter-spacing: 1px;">Asistente Vintage</strong>
+                <button type="button" class="btn-close btn-close-white" id="chat-close-btn"></button>
+            </div>
+            <div id="chat-body" class="card-body chat-body-custom" style="overflow-y: auto; flex-grow: 1; padding: 15px;">
+                <!-- Mensaje de bienvenida se añadirá con JS -->
+            </div>
+            <div class="card-footer bg-transparent border-top-0 pb-3">
+                <!-- Botones de sugerencia -->
+                <div class="d-flex gap-2 flex-wrap mb-2" id="suggestion-buttons">
+                    <button class="btn suggestion-btn" data-mensaje="Ver productos">📦 Ver productos</button>
+                    <button class="btn suggestion-btn" data-mensaje="Precios">💰 Precios</button>
+                    <button class="btn suggestion-btn" data-mensaje="Envíos">🚚 Envíos</button>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="chat-input" class="form-control bg-dark text-white border-secondary" placeholder="Escribe tu mensaje..." style="font-size: 14px;">
+                    <button class="btn chat-btn-customfw-bold" id="chat-send-btn" type="button">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       // ================================================================
+//  CONFIGURACIÓN Y DATOS DE PRODUCTOS
+// ================================================================
+const API_KEY = 'AQ.Ab8RN6I72ZgRNfeGLGVnUSdknkKwHxW-1ceufA-0mLys90vQRw';
+const MODELO = 'gemini-2.5-flash';
+const URL_API = `https://generativelanguage.googleapis.com/v1/models/${MODELO}:generateContent?key=${API_KEY}`;
+
+// Productos en estructura de datos
+const productos = [
+    {
+        id: 1,
+        nombre: 'Camisa Retro Slim',
+        precio: 180,
+        moneda: 'BS',
+        nuevo: true,
+        descripcion: 'Camisa de corte slim, cuello inglés, manga larga. Ideal para looks formales o smart casual.',
+        colores: ['Blanco', 'Negro', 'Azul marino'],
+        tallas: ['S', 'M', 'L', 'XL'],
+        material: '100% algodón peruano, suave y transpirable',
+        cuidados: 'Lavar en frío, no usar blanqueador, planchar a baja temperatura'
+    },
+    {
+        id: 2,
+        nombre: 'Chaqueta Cuero Urban',
+        precio: 450,
+        moneda: 'BS',
+        nuevo: false,
+        descripcion: 'Chaqueta de cuero sintético, diseño biker, cierre frontal con cremallera, cuello con solapas.',
+        colores: ['Negro', 'Café'],
+        tallas: ['M', 'L', 'XL', 'XXL'],
+        material: 'Cuero ecológico de alta durabilidad, forro interior de poliéster',
+        cuidados: 'Limpiar con paño húmedo, no exponer al sol directo, no usar detergentes fuertes'
+    },
+    {
+        id: 3,
+        nombre: 'Jean Clásico Dark',
+        precio: 220,
+        moneda: 'BS',
+        nuevo: false,
+        descripcion: 'Jean recto, tiro medio, acabado oscuro (dark wash). Combina con todo.',
+        colores: ['Azul índigo', 'Negro'],
+        tallas: ['30', '32', '34', '36'],
+        material: 'Denim de algodón elástico (98% algodón, 2% elastano)',
+        cuidados: 'Lavar del revés, secar a la sombra, no usar secadora'
+    },
+    {
+        id: 4,
+        nombre: 'Polera Oversize White',
+        precio: 130,
+        moneda: 'BS',
+        nuevo: false,
+        descripcion: 'Polera oversize, cuello redondo, manga corta, corte holgado. Estilo urbano y cómodo.',
+        colores: ['Blanco', 'Negro'],
+        tallas: ['S', 'M', 'L', 'XL'],
+        material: 'Algodón peinado 180g/m², suave y duradero',
+        cuidados: 'Lavar en agua fría, no usar secadora, planchar a temperatura media'
+    }
+];
+
+// Construir contexto dinámico a partir de los productos
+let contextoConstruido = `
+Eres el asistente oficial de la tienda online "Vintage Men LP", especializada en ropa urbana para hombre, con envíos a toda Bolivia desde La Paz.
+
+Información de la tienda:
+- WhatsApp de contacto: +591 79635114
+- Horario: Lunes a Sábado de 10:00 a 20:00 (hora Bolivia).
+- Formas de pago: Transferencia bancaria, QR (BNB, BCP, FASSIL), efectivo contraentrega en La Paz.
+- Tiempo de envío: 24-48 horas en La Paz, 3-5 días hábiles a provincias.
+
+Productos disponibles:\n`;
+
+productos.forEach(p => {
+    contextoConstruido += `\n${p.nombre} - ${p.precio} ${p.moneda}`;
+    if (p.nuevo) contextoConstruido += ' (NUEVO)';
+    contextoConstruido += `\n  Descripción: ${p.descripcion}`;
+    contextoConstruido += `\n  Colores disponibles: ${p.colores.join(', ')}`;
+    contextoConstruido += `\n  Tallas disponibles: ${p.tallas.join(', ')}`;
+    contextoConstruido += `\n  Material: ${p.material}`;
+    contextoConstruido += `\n  Cuidados: ${p.cuidados}\n`;
+});
+
+contextoConstruido += `\nPolíticas de devolución: Se aceptan cambios dentro de los 7 días posteriores a la compra, siempre que el producto esté con etiquetas y en perfecto estado.
+Responde siempre en español, de forma cordial y profesional. Si te preguntan sobre temas ajenos a la tienda, redirige amablemente a los productos. Sé específico y útil.`;
+
+// Usamos contextoConstruido como el mensaje inicial
+const CONTEXTO_TIENDA = contextoConstruido;
+
+        // ============================================================
+        // 2. ESTADO DEL CHAT (historial y persistencia)
+        // ============================================================
+        let historial = [];
+
+        // Cargar historial desde localStorage si existe
+        const stored = localStorage.getItem('chatHistorial');
+        if (stored) {
+            try {
+                historial = JSON.parse(stored);
+            } catch (e) {
+                historial = [];
+            }
+        }
+
+        // Si no hay historial, inicializar con el mensaje de bienvenida del bot
+        if (historial.length === 0) {
+            historial.push({
+                role: 'model',
+                text: '¡Hola! Bienvenido a Vintage Men LP. ¿En qué puedo ayudarte hoy?'
+            });
+        }
+
+        // ============================================================
+        // 3. FUNCIONES PRINCIPALES
+        // ============================================================
+
+        // Renderizar todos los mensajes del historial en el chat-body
+        function renderizarHistorial() {
+            const chatBody = document.getElementById('chat-body');
+            chatBody.innerHTML = ''; // Limpiar
+            historial.forEach(msg => {
+                const esUsuario = msg.role === 'user';
+                const clase = esUsuario ? 'chat-badge-user' : 'chat-badge-bot';
+                const alineacion = esUsuario ? 'text-end' : 'text-start';
+                const html = `
+                    <div class="mb-2 ${alineacion}">
+                        <span class="badge ${clase} p-2 text-wrap text-start" style="max-width: 85%; font-weight: normal; font-size: 13px; line-height: 1.4;">
+                            ${msg.text}
+                        </span>
+                    </div>
+                `;
+                chatBody.innerHTML += html;
+            });
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Guardar historial en localStorage
+        function guardarHistorial() {
+            localStorage.setItem('chatHistorial', JSON.stringify(historial));
+        }
+
+        // Mostrar indicador de "escribiendo..."
+        function mostrarIndicador() {
+            const chatBody = document.getElementById('chat-body');
+            const indicador = document.createElement('div');
+            indicador.id = 'typing-indicator';
+            indicador.className = 'mb-2 text-start';
+            indicador.innerHTML = `<span class="badge chat-badge-bot p-2">...</span>`;
+            chatBody.appendChild(indicador);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Ocultar indicador
+        function ocultarIndicador() {
+            const indicador = document.getElementById('typing-indicator');
+            if (indicador) indicador.remove();
+        }
+
+        // Agregar un mensaje al historial y renderizar
+        function agregarMensaje(role, text) {
+            historial.push({ role, text });
+            renderizarHistorial();
+            guardarHistorial();
+        }
+
+        // Enviar mensaje del usuario a la API
+        async function enviarMensajeWeb(mensaje) {
+            const input = document.getElementById('chat-input');
+            const texto = mensaje || input.value.trim();
+            if (!texto) return;
+
+            // Agregar mensaje del usuario al historial y renderizar
+            agregarMensaje('user', texto);
+            input.value = '';
+
+            // Mostrar indicador de escritura
+            mostrarIndicador();
+
+            try {
+                // Preparar el payload con el historial completo (pero limitado a los últimos 10 mensajes para no exceder tokens)
+                const historialLimitado = historial.slice(-10); // últimos 10 intercambios
+                // Construir contents para Gemini
+                const contents = [];
+                // Inyectar el contexto de la tienda como primer mensaje del sistema (simulado como user)
+                contents.push({
+                    role: 'user',
+                    parts: [{ text: CONTEXTO_TIENDA }]
+                });
+                // Añadir historial (cada mensaje con su rol)
+                historialLimitado.forEach(msg => {
+                    contents.push({
+                        role: msg.role === 'user' ? 'user' : 'model',
+                        parts: [{ text: msg.text }]
+                    });
+                });
+
+                const cuerpoPeticion = {
+                    contents: contents,
+                    generationConfig: {
+                        temperature: 0.5,
+                        maxOutputTokens: 300
+                    }
+                };
+
+                const response = await fetch(URL_API, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(cuerpoPeticion)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    console.error('Error de Gemini:', errorData);
+                    throw new Error(`Error ${response.status}: ${errorData.error?.message || 'Error desconocido'}`);
+                }
+
+                const data = await response.json();
+                const textoRespuesta = data.candidates[0].content.parts[0].text;
+
+                // Agregar respuesta del bot al historial
+                agregarMensaje('model', textoRespuesta);
+
+            } catch (error) {
+                console.error('Error en enviarMensajeWeb:', error);
+                // Mostrar mensaje de error amigable
+                const errorMsg = '⛔ Lo siento, no pude procesar tu mensaje. Intenta de nuevo.';
+                agregarMensaje('model', errorMsg);
+            } finally {
+                ocultarIndicador();
+            }
+        }
+
+        // Función para enviar mensajes predefinidos desde los botones de sugerencia
+        function enviarMensajePredefinido(mensaje) {
+            enviarMensajeWeb(mensaje);
+        }
+
+        // Función para abrir/cerrar el chat
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            chatWindow.classList.toggle('d-none');
+            // Si se abre, enfocar el input
+            if (!chatWindow.classList.contains('d-none')) {
+                document.getElementById('chat-input').focus();
+            }
+        }
+
+        // ============================================================
+        // 4. ASIGNACIÓN DE EVENTOS (después de cargar el DOM)
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Renderizar historial inicial
+            renderizarHistorial();
+
+            // Botón toggle (abrir/cerrar)
+            document.getElementById('chat-toggle-btn').addEventListener('click', toggleChat);
+            document.getElementById('chat-close-btn').addEventListener('click', toggleChat);
+
+            // Botón enviar
+            document.getElementById('chat-send-btn').addEventListener('click', function() {
+                enviarMensajeWeb();
+            });
+
+            // Enter en el input
+            document.getElementById('chat-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    enviarMensajeWeb();
+                }
+            });
+
+            // Botones de sugerencia
+            document.querySelectorAll('.suggestion-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const mensaje = this.getAttribute('data-mensaje');
+                    enviarMensajePredefinido(mensaje);
+                });
+            });
+        });
+
+        // (Opcional) Exponer funciones globalmente si se necesitan desde otros scripts
+        window.enviarMensajeWeb = enviarMensajeWeb;
+        window.toggleChat = toggleChat;
+        window.enviarMensajePredefinido = enviarMensajePredefinido;
+
+        console.log('✅ Chatbot mejorado cargado correctamente.');
+    </script>
+
 </body>
 </html>
