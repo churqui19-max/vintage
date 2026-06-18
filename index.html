@@ -338,9 +338,57 @@
        // ================================================================
 //  CONFIGURACIÓN Y DATOS DE PRODUCTOS
 // ================================================================
-const API_KEY = 'AQ.Ab8RN6I72ZgRNfeGLGVnUSdknkKwHxW-1ceufA-0mLys90vQRw';
-const MODELO = 'gemini-2.5-flash';
-const URL_API = `https://generativelanguage.googleapis.com/v1/models/${MODELO}:generateContent?key=${API_KEY}`;
+async function enviarMensajeWeb(mensaje = null) {
+    const texto = mensaje || chatInput.value.trim();
+    if (!texto) return;
+    if (!mensaje) chatInput.value = '';
+
+    historial.push({ role: 'user', text: texto });
+    localStorage.setItem('chatHistorial', JSON.stringify(historial));
+    renderizarMensajes();
+
+    const indicadorId = 'typing-indicator-' + Date.now();
+    chatBody.innerHTML += `<div id="${indicadorId}" class="mb-2 text-start"><span class="badge chat-badge-bot p-2">⏳ Escribiendo...</span></div>`;
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    try {
+        // 🔥 LLAMADA A TU WORKER DE CLOUDFLARE (reemplaza con tu URL)
+        const response = await fetch('https://vintage-chatbot.churqui19.workers.dev', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mensaje: texto })
+        });
+
+        document.getElementById(indicadorId)?.remove();
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            console.error('Error Worker:', errorData);
+            let msgError = 'Lo siento, hubo un problema al procesar tu mensaje.';
+            if (errorData.error) {
+                msgError += ` (${errorData.error})`;
+            }
+            historial.push({ role: 'model', text: '⛔ ' + msgError });
+            localStorage.setItem('chatHistorial', JSON.stringify(historial));
+            renderizarMensajes();
+            return;
+        }
+
+        const data = await response.json();
+        const respuesta = data.respuesta || 'No pude entender tu consulta.';
+
+        historial.push({ role: 'model', text: respuesta });
+        localStorage.setItem('chatHistorial', JSON.stringify(historial));
+        renderizarMensajes();
+
+    } catch (error) {
+        console.error('Error en enviarMensajeWeb:', error);
+        document.getElementById(indicadorId)?.remove();
+        historial.push({ role: 'model', text: '⛔ Error de conexión con el servidor.' });
+        localStorage.setItem('chatHistorial', JSON.stringify(historial));
+        renderizarMensajes();
+    }
+}
 
 // Productos en estructura de datos
 const productos = [
